@@ -1,0 +1,4 @@
+#!/bin/bash
+
+. ./.env || exit 1
+ssh aws_cam@$DEEPLENS_IP cat /opt/awscam/out/ch1_out.h264 | mplayer -demuxer h264es -
