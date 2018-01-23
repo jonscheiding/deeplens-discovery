@@ -1,7 +1,7 @@
 import { Discovery } from 'udp-discovery';
 import { argv } from 'yargs'
 
-const SERVICE_NAME = "deeplens-discovery";
+import { SERVICE_NAME, generateEvent } from './service-info';
 
 const discoveryService = new Discovery();
 
@@ -13,7 +13,8 @@ if (!argv.server && !argv.client) {
 if(argv.server) {
     discoveryService.on('available', (name, data, reason) => {
         console.log('server: available', { name, data, reason });
-        discoveryService.sendEvent('deeplens', {});
+        const event = generateEvent();
+        discoveryService.sendEvent(event.name, event.data);
     });
 }
 
