@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[ -f ./.env ] && . ./.env
+
+ssh aws_cam@$DEEPLENS_HOST cat /opt/awscam/out/ch1_out.h264 | mplayer -demuxer h264es -

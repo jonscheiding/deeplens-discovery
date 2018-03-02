@@ -1,4 +1,0 @@
-#!/bin/bash
-
-. ./.env || exit 1
-ssh aws_cam@$DEEPLENS_IP cat /tmp/results.mjpeg | mplayer -demuxer lavf -lavfdopts format=mjpeg:probesize=32 -
